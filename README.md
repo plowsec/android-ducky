@@ -16,8 +16,8 @@ Rubber Ducky with Android
 * chmod +x droidducky.sh
 
 # Usage
-* bash droidducky.sh payload.txt
-* In the futur, you will be able to specifiy the keyboard layout as parameter
+* bash droidducky.sh payload.txt ch-fr
+* The last parameter is optional. Default is US layout, but you can choose other layouts if you add "fr" or "ch-fr" as parameter.
 
 # Contributions guidelines 
 * Add support for your country keyboard layout by editing the "convert" function in droidducky.sh
