@@ -12,6 +12,7 @@ Rubber Ducky with Android
 * You will need a terminal emulator, I recommend that you install Terminal IDE from the Play Store with Hacker's Keyboard (otherwise the app will crash for Android > 4.4). But you can also use JuiceSSH or whatever.
 * You will need cool payloads : https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Payloads
 * chmod +x hid-gadget-test
+* Recompile hid.gadget-test.c if needed using : ndk-build  NDK_PROJECT_PATH=$(pwd) APP_BUILD_SCRIPT=$(pwd)/Android.mk      
 * chmod +x droidducky.sh
 
 # Usage
