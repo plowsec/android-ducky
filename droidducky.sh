@@ -324,7 +324,18 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 		last_cmd="$cmd"
 
 		for ((  i=0; i<${#info}; i++  )); do
-			kbcode=$(convert "${info:$i:1}")
+
+            #add keyboard layout commandlines parameters here
+            if [ "$2" == "ch-fr" ]
+            then
+			    kbcode=$(convert-ch-fr "${info:$i:1}")
+
+            elif [ "$2" == "fr" ]
+            then kbcode=$(convert-fr "${info:$1:1}")
+
+            else
+                kbcode=$(convert "${info:$1:1}")
+            fi
 
 			if [ "$kbcode" != "" ]
 			then
