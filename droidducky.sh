@@ -299,39 +299,39 @@ function convert-fr()
 		kbcode='kp-multiply'
 		
     #letter management (case is important)
-	else
-	    isUpperCase=false
-	    tmp=$1
-	    case "$1" in
-	    [[:upper:]])
-	        isUpperCase=true
-	        #convert to lower case
-	        tmp="${tmp,,}"
-	    esac
+    else
+        isUpperCase=false
+        tmp=$1
+        case "$1" in
+        [[:upper:]])
+            isUpperCase=true
+            #convert to lower case
+            tmp="${tmp,,}"
+        esac
 
-	    if [ "$tmp" == "q" ]
+        if [ "$tmp" == "q" ]
         then
-	        tmp='a'
-	
+            tmp='a'
+
         elif [ "$tmp" == "a" ]
         then
-	        tmp='q'
+            tmp='q'
 
         elif [ "$tmp" == "z" ]
         then
-	        tmp='w'
+            tmp='w'
 
         elif [ "$tmp" == "w" ]
         then
-	        tmp='z'
-	
+            tmp='z'
+
         elif [ "$tmp" == "m" ]
         then
-	        tmp='semicolon'
-		else
-		    tmp=$tmp
-		fi
-        
+            tmp='semicolon'
+        else
+            tmp=$tmp
+        fi
+
         if [ "$isUpperCase" == true ]
         then
             #restoring the 'caseness'
@@ -339,9 +339,9 @@ function convert-fr()
         else
             kbcode="$tmp"
         fi
-	fi
+    fi
 
-	echo "$kbcode"
+    echo "$kbcode"
 }
 #convert to swiss-french
 # ( => )
@@ -528,7 +528,7 @@ function convert-ch-fr()
         else
             kbcode="$tmp"
         fi
-	fi
+    fi
 
 	echo "$kbcode"
 }
