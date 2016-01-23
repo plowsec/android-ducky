@@ -498,16 +498,16 @@ function convert-ch-fr()
 	then
 	    kbcode='z'
 
-	#letter management (case is important)
-	else
-	    isUpperCase=false
-	    tmp=$1
-	    case "$1" in
-	    [[:upper:]])
-	        isUpperCase=true
-	        #convert the character to lower case
-	        tmp="${tmp,,}"
-	    esac
+    #letter management (case is important)
+    else
+        isUpperCase=false
+        tmp=$1
+        case "$1" in
+        [[:upper:]])
+            isUpperCase=true
+            #convert the character to lower case
+            tmp="${tmp,,}"
+        esac
 
         if [ "$tmp" == "z" ]
         then
@@ -530,7 +530,7 @@ function convert-ch-fr()
         fi
     fi
 
-	echo "$kbcode"
+    echo "$kbcode"
 }
 
 while IFS='' read -r line || [[ -n "$line" ]]; do
