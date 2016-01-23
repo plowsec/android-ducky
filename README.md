@@ -8,7 +8,7 @@ Rubber Ducky with Android
 # How do I get setup ?
 * Root you android device
 * Check this link for device specific procedure : https://github.com/pelya/android-keyboard-gadget
-* Basically you will have to flash a new kernel to add HID keyboard support. Be sure to have TWRP or CWM Recovery otherwise the flashing process might not even start. If you don't have TWRP or CWM Recovery, you can simply download the appp Rashr. This requires root though.
+* Basically you will have to flash a new kernel to add HID keyboard support. Be sure to have TWRP or CWM Recovery otherwise the flashing process might not even start. If you don't have TWRP or CWM Recovery, you can simply download the app Rashr. This requires root though.
 * You will need a terminal emulator, I recommend that you install Terminal IDE from the Play Store with Hacker's Keyboard (otherwise the app will crash for Android > 4.4). But you can also use JuiceSSH or whatever.
 * You will need cool payloads : https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Payloads
 * chmod +x hid-gadget-test
