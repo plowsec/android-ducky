@@ -26,7 +26,7 @@ last_cmd=""
 last_string=""
 line_num=0
 
-function converte() 
+function convert() 
 {
 	local kbcode=""
 
@@ -156,7 +156,7 @@ function converte()
 # \ => $
 # ; => é
 # " => ä
-function convert() 
+function convert-ch-fr() 
 {
 	local kbcode=""
 
