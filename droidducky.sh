@@ -145,6 +145,204 @@ function convert()
 	echo "$kbcode"
 }
 
+# w => z
+# ( => 9
+# - => )
+# m => .
+# . => :
+# ) => 0
+# a => q
+# ' => ù
+# : => M
+# / => !
+# , => ;
+# % => 5
+# M => ?
+# \ => *
+# ; => m
+# " => %
+
+function convert-fr() 
+{
+	local kbcode=""
+
+	if [ "$1" == " " ]
+	then
+		kbcode='space'
+	
+	elif [ "$1" == "!" ]
+	then
+		kbcode='slash'
+	
+	elif [ "$1" == "." ]
+	then
+		kbcode='left-shift comma'
+	
+	elif [ "$1" == "\`" ]
+	then
+		kbcode='left-alt 7'
+	
+	elif [ "$1" == "~" ]
+	then
+		kbcode='left-alt 2'
+	
+	elif [ "$1" == "+" ]
+	then
+		kbcode='kp-plus'
+	
+	elif [ "$1" == "=" ]
+	then
+		kbcode='equal'
+	
+	elif [ "$1" == "_" ]
+	then
+		kbcode='8'
+	
+	elif [ "$1" == "-" ]
+	then
+		kbcode='6'
+	
+	elif [ "$1" == "\"" ]
+	then
+		kbcode='3'
+	
+	elif [ "$1" == "'" ]
+	then
+		kbcode='4'
+	
+	elif [ "$1" == ":" ]
+	then
+		kbcode='period'
+	
+	elif [ "$1" == ";" ]
+	then
+		kbcode='comma'
+	
+	elif [ "$1" == "<" ]
+	then
+		kbcode='europe-2'
+	
+	elif [ "$1" == "," ]
+	then
+		kbcode='m'
+	
+	elif [ "$1" == ">" ]
+	then
+		kbcode='left-shift europe-2'
+	
+	elif [ "$1" == "?" ]
+	then
+		kbcode='left-shift m'
+	
+	elif [ "$1" == "\\" ]
+	then
+		kbcode='right-alt 8'
+	
+	elif [ "$1" == "|" ]
+	then
+		kbcode='right-alt 6'
+	
+	elif [ "$1" == "/" ]
+	then
+		kbcode='left-shift period'
+	
+	elif [ "$1" == "{" ]
+	then
+		kbcode='right-alt 4'
+	
+	elif [ "$1" == "}" ]
+	then
+		kbcode='right-alt equal'
+	
+	elif [ "$1" == "(" ]
+	then
+		kbcode='5'
+	
+	elif [ "$1" == ")" ]
+	then
+		kbcode='minus'
+	
+	elif [ "$1" == "[" ]
+	then
+		kbcode='right-alt 5'
+	
+	elif [ "$1" == "]" ]
+	then
+		kbcode='right-alt minus'
+	
+	elif [ "$1" == "#" ]
+	then
+		kbcode='right-alt 3'
+	
+	elif [ "$1" == "@" ]
+	then
+		kbcode='right-alt 0'
+	
+	elif [ "$1" == "$" ]
+	then
+		kbcode='rbracket'
+	
+	elif [ "$1" == "%" ]
+	then
+		kbcode='left-shift quote'
+	
+	elif [ "$1" == "^" ]
+	then
+		kbcode='lbracket'
+	
+	elif [ "$1" == "&" ]
+	then
+		kbcode='1'
+	
+	elif [ "$1" == "*" ]
+	then
+		kbcode='kp-multiply'
+		
+    #letter management (case is important)
+	else
+	    isUpperCase=false
+	    tmp=$1
+	    case "$1" in
+	    [[:upper:]])
+	        isUpperCase=true
+	        #convert to lower case
+	        tmp="${tmp,,}"
+	    esac
+
+	    if [ "$tmp" == "q" ]
+        then
+	        tmp='a'
+	
+        elif [ "$tmp" == "a" ]
+        then
+	        tmp='q'
+
+        elif [ "$tmp" == "z" ]
+        then
+	        tmp='w'
+
+        elif [ "$tmp" == "w" ]
+        then
+	        tmp='z'
+	
+        elif [ "$tmp" == "m" ]
+        then
+	        tmp='semicolon'
+		else
+		    tmp=$tmp
+		fi
+        
+        if [ "$isUpperCase" == true ]
+        then
+            #restoring the 'caseness'
+            kbcode="left-shift $tmp"
+        else
+            kbcode="$tmp"
+        fi
+	fi
+
+	echo "$kbcode"
+}
 #convert to swiss-french
 # ( => )
 # - => '
@@ -300,16 +498,36 @@ function convert-ch-fr()
 	then
 	    kbcode='z'
 
+	#letter management (case is important)
 	else
-		case $1 in
-		[[:upper:]])
-			tmp=$1
-			kbcode="left-shift ${tmp,,}"
-			;;
-		*)
-			kbcode="$1"
-			;;
-		esac
+	    isUpperCase=false
+	    tmp=$1
+	    case "$1" in
+	    [[:upper:]])
+	        isUpperCase=true
+	        #convert the character to lower case
+	        tmp="${tmp,,}"
+	    esac
+
+	    if [ "$tmp" == "z" ]
+        then
+	        tmp='y'
+	    
+	    elif [ "$tmp" == "y" ]
+        then
+	        tmp='z'
+	
+		else
+		    tmp=$tmp
+		fi
+        
+        if [ "$isUpperCase" == true ]
+        then
+            #restoring the 'caseness'
+            kbcode="left-shift $tmp"
+        else
+            kbcode="$tmp"
+        fi
 	fi
 
 	echo "$kbcode"
@@ -331,10 +549,10 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 			    kbcode=$(convert-ch-fr "${info:$i:1}")
 
             elif [ "$2" == "fr" ]
-            then kbcode=$(convert-fr "${info:$1:1}")
+            then kbcode=$(convert-fr "${info:$i:1}")
 
             else
-                kbcode=$(convert "${info:$1:1}")
+                kbcode=$(convert "${info:$i:1}")
             fi
 
 			if [ "$kbcode" != "" ]
