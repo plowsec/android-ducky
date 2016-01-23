@@ -509,18 +509,18 @@ function convert-ch-fr()
 	        tmp="${tmp,,}"
 	    esac
 
-	    if [ "$tmp" == "z" ]
+        if [ "$tmp" == "z" ]
         then
-	        tmp='y'
-	    
-	    elif [ "$tmp" == "y" ]
+            tmp='y'
+
+        elif [ "$tmp" == "y" ]
         then
-	        tmp='z'
-	
-		else
-		    tmp=$tmp
-		fi
-        
+            tmp='z'
+
+        else
+            tmp=$tmp
+        fi
+
         if [ "$isUpperCase" == true ]
         then
             #restoring the 'caseness'
