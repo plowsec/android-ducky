@@ -1,6 +1,12 @@
 # android-ducky
 Rubber Ducky with Android
 
+# Project status
+
+Well, it worked well in 2015 but I hadn't had any use for it recently, so this has gone untested afterwards. I keep it for future reference, but be careful before using. Do your research, adapt and conquer ;-)
+
+...OR, get me some nice PRs and I will merge them.
+
 # What is this repository for ?
 * Android version of the famous Rubber Ducky
 * Supports non-US keyboard layouts
